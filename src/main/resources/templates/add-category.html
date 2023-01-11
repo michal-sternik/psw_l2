@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/categories/add}" th:object="${category}" method="post">
+  <div>
+    <label>Nazwa:</label>
+    <input type="text" th:field="*{name}"/>
+  </div>
+  <div>
+    <label>Kod:</label>
+    <input type="text" th:field="*{code}"/>
+  </div>
+  <input type="submit" value="Dodaj kategorię"/>
+</form>
+</body>
+</html>

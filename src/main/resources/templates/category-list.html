@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="text/html; UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<table class="display table table-bordered" style="width:800px">
+    <thead class="text-center">
+    <tr>
+        <th class="text-right">Id</th>
+        <th class="text-left">Nazwa kategorii</th>
+        <th class="text-right">Kod</th>
+        <th class="text-center" colspan="3">Akcja</th>
+    </tr>
+    </thead>
+
+    <tr th:each="category : ${categories}">
+        <td th:text="${category.id}"></td>
+        <td th:text="${category.name}"></td>
+        <td th:text="${category.code}"></td>
+        <td>
+            <a class="btn btn-primary" style="background-color: hotpink" th:href="@{/categories/{id}(id=${category.id})}">Szczegóły</a>
+            <a class="btn btn-primary" style="background-color: lightpink" th:href="@{/categories/edit/{id}(id=${category.id})}">Edytuj</a>
+            <a class="btn btn-primary" style="background-color: hotpink" th:href="@{/categories/delete/{id}(id=${category.id})}">Usuń</a>
+        </td>
+    </tr>
+</table>
+<a th:href="@{/products}">Zarządzaj produktami</a>
+
+</body>
+</html>

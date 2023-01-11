@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="text/html; UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<header th:fragment="myheader">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/products">Tabela produktów</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a th:href="@{/products/add}">Dodaj produkt</a>
+        </li>
+        <li><a th:href="@{/categories/add}">Dodaj kategorię</a>
+        </li>
+        <li><a th:href="@{/categories}">Zarządzaj kategoriami</a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+</header>
+<body>
+<table class="display table table-bordered" style="width:800px">
+  <thead class="text-center">
+  <tr>
+    <th class="text-right">Id</th>
+    <th class="text-left">Nazwa produktu</th>
+    <th class="text-left">Waga [kg]</th>
+    <th class="text-left">Cena [pln]</th>
+    <th class="text-left">Kategoria</th>
+    <th class="text-center" colspan="3">Akcja</th>
+  </tr>
+  </thead>
+  <tr th:each="product : ${products}">
+    <td th:text="${product.id}"></td>
+    <td th:text="${product.name}"></td>
+    <td th:text="${product.weight}"></td>
+    <td th:text="${product.price}"></td>
+    <td th:text="${product.category.name}"></td>
+    <td>
+      <a class="btn btn-primary" th:href="@{/products/{id}(id=${product.id})}">Szczegóły</a>
+      <a class="btn btn-primary" th:href="@{/products/edit/{id}(id=${product.id})}">Edytuj</a>
+      <a class="btn btn-danger" th:href="@{/products/delete/{id}(id=${product.id})}">Usuń</a>
+    </td>
+  </tr>
+</table>
+<ul>
+</ul>
+</body>
+</html>
